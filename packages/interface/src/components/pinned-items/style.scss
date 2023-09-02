@@ -1,0 +1,30 @@
+.interface-pinned-items {
+	display: flex;
+
+	// We intentionally hide pinned items (plugins) on mobile, and unhide them at desktop breakpoints.
+	// Otherwise the list can wreak havoc on the layout.
+	.components-button {
+		display: none;
+		margin: 0;
+
+		&:nth-last-child(1),
+		&:nth-last-child(2) {
+			display: flex;
+		}
+
+		svg {
+			max-width: $icon-size;
+			max-height: $icon-size;
+		}
+
+		@include break-small() {
+			display: flex;
+		}
+	}
+
+	// Gap between pinned items.
+	gap: $grid-unit-05;
+
+	// Account for larger grid from parent container gap.
+	margin-right: -$grid-unit-05;
+}
